@@ -1,0 +1,27 @@
+<ion-view view-title="Practice Result">
+    <ion-content>
+        <div class="card" ng-repeat="prioritizedExercise in vm.prioritized">
+            <div class="item item-divider assertive stable-bg">
+                {{prioritizedExercise.name}}
+            </div>
+            <div class="item item-text-wrap">
+                Practice on {{determineNextPracticedTempo(prioritizedExercise).label}}
+            </div>
+        </div>
+        <div class="card" ng-repeat="normalExercise in vm.normal">
+            <div class="item item-divider">
+                {{normalExercise.name}}
+            </div>
+            <div class="item item-text-wrap">
+                Practice on {{determineNextPracticedTempo(normalExercise).label}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-offset-50">
+                <button class="button button-block button-stable icon-left ion-checkmark"
+                        type="submit"
+                        ng-click="savePracticeResult()">OK</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

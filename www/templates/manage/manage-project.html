@@ -1,0 +1,36 @@
+<ion-view view-title="Manage Project">
+    <ion-content>
+        <form novalidate ng-submit="updateProject()">
+            <label class="item item-input">
+                <span class="input-label">Project Name</span>
+                <input type="text"
+                       ng-model="vm.project.name"
+                       ng-change="vm.dirty = true">
+            </label>
+            <div>
+                <a class="button button-clear button-dark icon-left ion-plus-circled"
+                   ng-click="openAddExerciseModal()"></a>
+            </div>
+            <ul class="list">
+                <li class="item" ng-repeat="(exerciseId, exercise) in vm.exercises">
+                    <div class="row"
+                         ng-class="{'stable-bg': !exercise.active, 'assertive-bg': exercise.prioritized && exercise.active}">
+                        <div class="col col-75">
+                            <a class="button icon-right ion-chevron-right button-stable"
+                               ng-click="openUpdateExerciseModal(exercise)">{{exercise.name}}</a>
+                        </div>
+                        <div class="col col-25">
+                            <a class="button button-clear button-dark icon-right ion-trash-a"
+                               ng-click="removeExercise(exerciseId)"></a> 
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="row" ng-show="vm.dirty">
+                <div class="col col-offset-50">
+                    <button class="button button-block button-stable icon-left ion-checkmark" type="submit">Save</button>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

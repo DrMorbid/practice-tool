@@ -1,0 +1,28 @@
+<ion-view view-title="Practice">
+    <ion-content>
+        <form novalidate ng-submit="startPractising()">
+            <label class="item item-input item-select">
+                <div class="input-label">Select Project</div>
+                <select ng-options="project.name for (projectId, project) in vm.availableProjects"
+                        ng-model="vm.selectedProject"
+                        ng-change="loadActivePrioritizedExercisesCount(vm.selectedProject)"></select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Number of Exercises</span>
+                <input type="number" ng-model="vm.selectedNumberOfExercises">
+            </label>
+            <div class="row">
+                <div class="col col-50">
+                    <div class="card" ng-show="vm.activePrioritizedExercisesCount > 0">
+                        <div class="item item-text-wrap assertive stable-bg">
+                            This Project has {{vm.activePrioritizedExercisesCount}} Top Priority Exercises.
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-50">
+                    <button class="button button-block button-stable icon-left ion-checkmark" type="submit">OK</button>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

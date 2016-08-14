@@ -1,0 +1,21 @@
+<ion-view view-title="Manage">
+    <ion-content>
+        <div>
+            <a class="button button-clear button-dark icon-left ion-plus-circled" ng-click="openAddProjectModal()"></a>
+        </div>
+        <ul class="list">
+            <li class="item" ng-repeat="(projectId, project) in vm.projects">
+                <div class="row">
+                    <div class="col col-75">
+                        <a class="button icon-right ion-chevron-right button-stable"
+                           ng-click="openProjectDeatil(projectId)">{{project.name}}</a>
+                    </div>
+                    <div class="col col-25">
+                        <a class="button button-clear button-dark icon-right ion-trash-a"
+                           ng-click="removeProject(projectId)"></a> 
+                    </div>
+                </div> 
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>
